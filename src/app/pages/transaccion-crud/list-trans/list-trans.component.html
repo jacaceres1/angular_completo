@@ -1,0 +1,87 @@
+<link rel="stylesheet"
+  href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet"
+  href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+<section class="py-1 bg-blueGray-50">
+  <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1
+        class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Pedidos Clientes</h1>
+    </div>
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+      <div class="block w-full overflow-x-auto">
+        <table class="items-center bg-transparent w-full border-collapse">
+          <thead>
+            <tr>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                N°
+              </th>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Fecha Transacción
+              </th>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Codigo Transacción
+              </th>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Estado del Pedido
+              </th>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Verificar Transacción
+              </th>
+              <th
+                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                Verificar información
+              </th>
+            </tr>
+          </thead>
+
+          <tbody >
+            <tr *ngFor="let item of pedidos; let i = index">
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-ss whitespace-nowrap p-4 ">{{ i+1}}</td>
+              <td
+                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 ">
+                {{ formatDate(item.fecha_transferencia)}}
+              </td>
+              <td
+                class="border-t-0 px-6 align-center border-l-0 border-r-0 text-s whitespace-nowrap p-4">
+                {{item.codigo_transferencia}}
+              </td>
+              <td
+                class="border-t-0 px-6 align-center border-l-0 border-r-0 text-s whitespace-normal p-4">
+                {{estadoDelPedido(item.estado_pedido)}}
+              </td>
+              <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-center">
+                <button (click)="observarTransaccion(item.id_pedido)">
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
+                    <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                  </svg>
+
+                </button>
+              </td>
+              <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-center">
+                <button (click)="observaDireccion(item.id_pedido)">
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"/>
+                    <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                  </svg>
+
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="pedidos.length === 0">
+              <td colspan="4" class="text-center py-4">No se dispone de transacciones</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

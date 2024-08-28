@@ -1,0 +1,77 @@
+<div class="mt-8">
+  <div class="container mx-auto px-6 py-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Primer Reporte -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-bold text-gray-800">Categorías Más Vendidas</h2>
+          <button (click)="updateCategorias()" class="bg-white border border-gray-300 p-2 rounded-full shadow hover:bg-gray-100 transition-colors">
+            <span class="material-icons text-gray-600">refresh</span>
+          </button>
+        </div>
+        <div *ngIf="categoriasChartData">
+          <canvas baseChart
+            [data]="categoriasChartData"
+            chartType="pie"
+            [options]="chartOptions">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Segundo Reporte -->
+      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-bold text-gray-800">Provincias con Más Ventas</h2>
+          <button (click)="updateProvincias()" class="bg-white border border-gray-300 p-2 rounded-full shadow hover:bg-gray-100 transition-colors">
+            <span class="material-icons text-gray-600">refresh</span>
+          </button>
+        </div>
+        <div *ngIf="provinciasChartData">
+          <canvas baseChart
+            [data]="provinciasChartData"
+            chartType="pie"
+            [options]="chartOptions">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tercer Reporte (ajustado para igualar tamaño) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+      <!-- Primer Reporte -->
+      <div class="bg-white p-5 rounded-lg shadow-lg border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-bold text-gray-800">Categorías Menos Vendidas</h2>
+          <button (click)="updateTercerReporte()" class="bg-white border border-gray-300 p-2 rounded-full shadow hover:bg-gray-100 transition-colors">
+            <span class="material-icons text-gray-600">refresh</span>
+          </button>
+        </div>
+        <div *ngIf="noVentasReporteChartData">
+          <canvas baseChart
+            [data]="noVentasReporteChartData"
+            chartType="pie"
+            [options]="chartOptions">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-lg shadow-lg border border-gray-200 transition-transform transform hover:scale-105 hover:shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl font-bold text-gray-800">Cliente con mayores compras</h2>
+          <button (click)="updateCuartoReporte()" class="bg-white border border-gray-300 p-2 rounded-full shadow hover:bg-gray-100 transition-colors">
+            <span class="material-icons text-gray-600">refresh</span>
+          </button>
+        </div>
+        <div *ngIf="UsuarioReporteChartData">
+          <canvas baseChart
+            [data]="UsuarioReporteChartData"
+            chartType="pie"
+            [options]="chartOptions">
+          </canvas>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

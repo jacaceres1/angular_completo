@@ -1,0 +1,50 @@
+<app-confirm-dialog (onClose)="handleModalClose($event)"></app-confirm-dialog>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1
+        class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Marina
+        Store Categorias</h1>
+      <div class="flex justify-center items-center mt-4">
+        <button
+          class="flex text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-pink-900 rounded"
+          (click)="agregarCategoria()">Agregar</button>
+      </div>
+    </div>
+    <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+      <div class="p-2 sm:w-1/2 w-full" *ngFor="let item of categorias">
+        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="3"
+            class="text-pink-900 w-6 h-6 flex-shrink-0 mr-4"
+            viewBox="0 0 24 24">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+            <path d="M22 4L12 14.01l-3-3"></path>
+          </svg>
+          <span class="title-font font-medium">{{item.categoria_nombre}}</span>
+          <div class="flex space-x-2 ml-auto">
+            <button
+              class="text-blue-500 focus:outline-none"
+              (click)="editarCategoria(item.id_categoria)">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M17.414 2.586a2 2 0 00-2.828 0L3.414 13.757a1 1 0 00-.293.707V17a1 1 0 001 1h2.536a1 1 0 00.707-.293l11.172-11.172a2 2 0 000-2.828zM14 6l-1-1-1 1-7 7H5v-1l7-7 1-1z" />
+              </svg>
+            </button>
+            <button
+              class="text-red-500 focus:outline-none"
+              (click)="eliminarCategoria(item.id_categoria)">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M6 2a1 1 0 00-.707 1.707l1 1H5a1 1 0 000 2h10a1 1 0 000-2h-1.293l1-1A1 1 0 0014 2H6zM4 7a1 1 0 011-1h10a1 1 0 011 1v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

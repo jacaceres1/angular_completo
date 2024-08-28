@@ -1,0 +1,159 @@
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px] bg-white">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-5">
+        <label for="name"
+          class="mb-3 block text-base font-medium text-[#07074D]">
+          Nombres
+        </label>
+        <input type="text" name="nombres_usuario" id="nombres_usuario" formControlName="nombres_usuario"
+          placeholder="Ingrese sus nombres"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+      </div>
+      <div class="mb-5">
+        <label for="lastname"
+          class="mb-3 block text-base font-medium text-[#07074D]">
+          Apellidos
+        </label>
+        <input type="text" name="apellidos_usuario" id="apellidos_usuario" formControlName="apellidos_usuario"
+          placeholder="Ingrese sus apellidos"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+      </div>
+      <div class="mb-5">
+        <label for="email"
+          class="mb-3 block text-base font-medium text-[#07074D]">
+          Dirección de correo
+        </label>
+        <input type="email" name="correo" id="correo"
+          placeholder="Ingrese su email" formControlName="correo"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+      </div>
+      <div class="mb-5">
+        <label for="password"
+          class="mb-3 block text-base font-medium text-[#07074D]">Contraseña</label>
+        <div class="relative">
+          <input formControlName="contrasenia"
+            [type]="hidePassword ? 'password' : 'text'" id="password"
+            placeholder="Ingrese su contraseña"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+          <button type="button" (click)="togglePasswordVisibility()"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+            <svg
+              class="flex-shrink-0 size-3.5 text-gray-400 dark:text-neutral-600"
+              width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path class="hs-password-active:hidden"
+                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+              <path class="hs-password-active:hidden"
+                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+              <path class="hs-password-active:hidden"
+                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+              <line class="hs-password-active:hidden" x1="2" x2="22" y1="2"
+                y2="22"></line>
+              <path class="hidden hs-password-active:block"
+                d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle class="hidden hs-password-active:block" cx="12" cy="12"
+                r="3"></circle>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label for="confirmPassword"
+          class="mb-3 block text-base font-medium text-[#07074D]">Repita su
+          Contraseña</label>
+        <div class="relative">
+          <input formControlName="confirmPassword"
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            id="confirmPassword" placeholder="Repita su contraseña"
+            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+          <button type="button" (click)="toggleConfirmPasswordVisibility()"
+            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+
+            <svg
+              class="flex-shrink-0 size-3.5 text-gray-400 dark:text-neutral-600"
+              width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path class="hs-password-active:hidden"
+                d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+              <path class="hs-password-active:hidden"
+                d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+              <path class="hs-password-active:hidden"
+                d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+              <line class="hs-password-active:hidden" x1="2" x2="22" y1="2"
+                y2="22"></line>
+              <path class="hidden hs-password-active:block"
+                d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle class="hidden hs-password-active:block" cx="12" cy="12"
+                r="3"></circle>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mb-5 pt-3" formArrayName="addresses">
+        <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+          <label
+            class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+            Detalles de la Dirección
+          </label>
+          <div class="-mx-3 flex flex-wrap">
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="callep" id="callep"
+                  placeholder="Ingrese la calle princiapl"
+                  formControlName="calleP"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="calles" id="calles"
+                  placeholder="Ingrese la calle secundaria"
+                  formControlName="calleS"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="ciudad" id="ciudad"
+                  placeholder="Ingrese la ciudad" formControlName="ciudad"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="provincia" id="provincia"
+                  formControlName="provincia"
+                  placeholder="Ingrese la provincia"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="telefono" id="telefono"
+                  placeholder="Ingrese su telefono" formControlName="celular"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+              <div class="mb-5">
+                <input type="text" name="referencia" id="referencia"
+                  placeholder="Ingrese la referencia"
+                  formControlName="referencia"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="hover:shadow-form w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none">
+          Registrarse
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<app-logout (onClose)="onLogout($event)"></app-logout>
+<header class="text-white body-font bg-primary">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+        stroke-width="1.5" stroke="currentColor" class="size-10 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+      </svg>
+
+      <span class="ml-3 text-xl text-white">Marina Store</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-gray-900" routerLink="/" routerLinkActive="active">Home</a>
+      <a *ngIf="logeado && !esAdmin" class="mr-5 hover:text-gray-900" routerLink="/ordenes" routerLinkActive="active">Mis Pedidos</a>
+      <a *ngIf="logeado && esAdmin" class="mr-5 hover:text-gray-900" routerLink="/list-produtos" routerLinkActive="active">Productos Inventario</a>
+      <a *ngIf="logeado && esAdmin" class="mr-5 hover:text-gray-900" routerLink="/reportes" routerLinkActive="active">Reportes</a>
+      <a *ngIf="logeado && esAdmin" class="mr-5 hover:text-gray-900" routerLink="/list-categoria" routerLinkActive="active">Categorias</a>
+      <a  *ngIf="logeado && esAdmin" class="mr-5 hover:text-gray-900" routerLink="/list-transacciones" routerLinkActive="active">Pedidos</a>
+      <a *ngIf="!logeado" class="mr-5 hover:text-gray-900" routerLink="/login" routerLinkActive="active">Acceder</a>
+      <a *ngIf="logeado && !esAdmin" class="mr-5 hover:text-gray-900" routerLink="/carrito" routerLinkActive="active">Carrito</a>
+      <a *ngIf="logeado && esAdmin" class="mr-5 hover:text-gray-900" href="http://localhost:5000/upload" target="_blank">Probador</a>
+      <a *ngIf="logeado && !esAdmin" class="mr-5 hover:text-gray-900" href="http://localhost:5000/outfit_selection" target="_blank">Probador</a>
+      <button *ngIf="logeado" class="mr-5 hover:text-gray-900" (click)="showModal()">Cerrar sesión</button>
+    </nav>
+  </div>
+</header>

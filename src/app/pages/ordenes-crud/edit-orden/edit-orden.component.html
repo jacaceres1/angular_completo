@@ -1,0 +1,53 @@
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap lg:flex-nowrap">
+    <!-- Sección izquierda: Lista de productos en el carrito -->
+    <div class="w-full lg:w-3/4">
+      <h1
+        class="text-3xl font-medium text-gray-900 mb-12 text-center">Pedido</h1>
+      <div *ngFor="let item of paginatedPedidos"
+        class="-my-8 divide-y-2 divide-gray-100">
+        <div class="py-8 flex flex-wrap md:flex-nowrap items-center">
+          <div class="md:w-64 flex-shrink-0">
+            <img class="w-full h-full object-cover object-center rounded"
+              src="http://localhost:3110{{ item.imagen_producto }}"
+              alt="Imagen del Producto">
+          </div>
+          <div class="md:flex-grow md:pl-8">
+            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{
+              item.nombre_producto }}</h2>
+            <p class="leading-relaxed mb-4">{{ item.descripcion_producto }}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-900 font-bold">Precio: ${{
+                item.precio_producto }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-around mt-8">
+        <button (click)="prevPage()" [disabled]="currentPage === 1"
+          class="bg-primary hover:bg-primary-dark focus:ring-primary text-white py-2 px-4 rounded">
+          Anterior
+        </button>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+          class="bg-primary hover:bg-primary-dark focus:ring-primary text-white py-2 px-4 rounded">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <div class="w-full lg:w-1/4 bg-gray-100 p-6 rounded-lg ml-4 mt-8 lg:mt-0">
+      <h2 class="text-xl font-medium text-gray-900 mb-4">Resumen de Pago</h2>
+      <!-- Detalles de cada producto -->
+      <div *ngFor="let item of pedidos"
+        class="flex justify-between border-b border-gray-200 py-2">
+        <span class="text-gray-900">{{ item.nombre_producto }}</span>
+        <span class="text-gray-900 font-bold">${{ item.precio_producto }}</span>
+      </div>
+      <!-- Total -->
+      <div class="flex justify-between border-b border-gray-200 py-2">
+        <span class="text-gray-900">Total:</span>
+        <span class="text-gray-900 font-bold">${{ calcularTotal() }}</span>
+      </div>
+      <!-- Botón de proceder al pago -->
+    </div>
+  </div>
+</section>

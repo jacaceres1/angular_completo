@@ -1,0 +1,27 @@
+<div class="flex items-center justify-center p-12 ">
+  <div class="mx-auto w-full max-w-[550px] bg-white">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1
+        class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Agregar
+         Nuevo Categoria</h1>
+    </div>
+    <form [formGroup]="categoriasForm" (ngSubmit)="onSubmit()">
+      <div class="mb-5">
+        <label for="name"
+          class="mb-3 block text-base font-medium text-[#07074D]">
+          Nombre de la Categoria
+        </label>
+        <input type="text" name="categoria_nombre" id="categoria_nombre"
+          placeholder="Nombre de la categoria"
+          formControlName="categoria_nombre"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+      </div>
+      <div>
+        <button
+          class="hover:shadow-form w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none">
+          Agregar Categoria
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

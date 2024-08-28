@@ -1,0 +1,43 @@
+<app-confirm-dialog (onClose)="handleModalClose($event)"></app-confirm-dialog>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1
+        class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Marina
+        Store Inventario</h1>
+      <div class="flex justify-center items-center mt-4">
+        <input type="text" placeholder="Buscar"
+          class="w-auto px-4 py-2 border border-gray-300 rounded mr-4"
+          [formControl]="searchControl">
+        <button
+          class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-pink-900 rounded"
+          (click)="agregarProduct()">Agregar</button>
+      </div>
+
+    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="p-4" *ngFor="let item of filteredProductos | async">
+        <div class="flex flex-col rounded-lg h-full bg-gray-100 p-8">
+          <div class="flex items-center justify-center mb-3">
+            <div
+              class="w-32 h-32 inline-flex items-center justify-center rounded-full bg-pink-900 text-white flex-shrink-0">
+              <img src="http://localhost:3110{{ item.imagen_producto }}" alt
+                class="w-full h-full object-cover rounded-full">
+            </div>
+          </div>
+          <!--<div class="flex-grow text-center">-->
+          <div class="flex flex-col justify-between h-full text-center">
+            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">{{item.nombre_producto}}</h2>
+            <p class="leading-relaxed text-base">{{nombreCategoria(item.id_categoria)}}</p>
+            <p class="leading-relaxed text-base">{{ item.precio_producto}}</p>
+            <div class="mt-5 flex justify-center space-x-4">
+              <button class="text-white bg-primary border-0 py-1 px-3 text-sm focus:outline-none hover:bg-pink-900 rounded" (click)="editarCliente(item.id_producto)">Editar</button>
+              <button class="text-white bg-red-300 border-0 py-1 px-3 text-sm focus:outline-none hover:bg-red-400 rounded" (click)="showModal(item.id_producto)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
